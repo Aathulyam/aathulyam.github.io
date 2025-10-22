@@ -245,4 +245,51 @@ footer a:hover{color:#fff}
   animation: pulseGlow 6s ease-in-out infinite;
 }
 
+/* ===== Inner Glow Ripple Effect ===== */
+.creed::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(0, 255, 204, 0.07),
+    rgba(0, 255, 204, 0.02) 40%,
+    transparent 70%
+  );
+  mix-blend-mode: screen;
+  animation: rippleGlow 14s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(30px);
+  opacity: 0.8;
+}
+
+@keyframes rippleGlow {
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.8;
+  }
+  25% {
+    transform: scale(1.05) translate(-10px, 10px);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.1) translate(10px, -10px);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1.05) translate(-10px, 10px);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.8;
+  }
+}
+
+/* Maintain readable layering for content */
+.creed-inner {
+  position: relative;
+  z-index: 1;
+}
 
