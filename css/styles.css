@@ -80,3 +80,44 @@ footer a:hover{color:#fff}
   box-shadow: 0 0 15px #00ffcc99;
 }
 
+/* ===== Hero Section ===== */
+.hero {
+  text-align: center;
+  padding: 100px 20px 60px;
+  background: radial-gradient(circle at center, #001f1c 0%, #000 100%);
+  border-bottom: 1px solid #00ffcc22;
+  box-shadow: inset 0 -10px 30px #00ffcc11;
+}
+
+.hero .logo {
+  width: 160px;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+  filter: drop-shadow(0 0 18px rgba(0,255,204,0.4));
+  transition: transform 0.3s ease;
+}
+
+.hero .logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 25px rgba(0,255,204,0.6));
+}
+
+.hero h1 {
+  font-family: 'Orbitron', 'Rajdhani', sans-serif;
+  color: #00ffcc;
+  font-size: 3rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 10px 0 8px;
+  text-shadow: 0 0 18px #00ffcc44;
+}
+
+.hero .tagline {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.2rem;
+  color: #66ffe0;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px #00ffcc33;
+}
+
