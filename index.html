@@ -16,15 +16,7 @@
     <p class="tagline">Forged in code. Born of purpose.</p>
   </header>
 
-  <nav class="topnav">
-    <a href="#enterprises">Enterprises</a>
-    <a href="#techworks">TechWorks</a>
-    <a href="#machines">Custom Machines</a>
-    <a href="#os">Athulyam OS</a>
-    <a href="#cybersafe">Cybersafe</a>
-    <a href="#forge">Forge</a>
-    <a href="#about">About</a>
-  </nav>
+  
 
   <section id="divisions">
   <h2>Divisions of the Forge</h2>
@@ -113,5 +105,19 @@
     <p>Contact: <a href="mailto:ceo.athulyam@gmail.com">ceo.athulyam@gmail.com</a></p>
   </footer>
   <script src="js/main.js"></script>
+<!-- Back to Top Button -->
+<button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" id="scrollTopBtn" title="Back to top">↑</button>
+
+<script>
+  // Show button when user scrolls down
+  const scrollBtn = document.getElementById("scrollTopBtn");
+  window.onscroll = () => {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+      scrollBtn.style.display = "block";
+    } else {
+      scrollBtn.style.display = "none";
+    }
+  };
+</script>
 </body>
 </html>
