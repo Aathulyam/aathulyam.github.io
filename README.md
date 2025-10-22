@@ -1,6 +1,6 @@
 # Athulyam Group — GitHub Pages
 
-This repository hosts the official site at **https://athulyam.github.io**.
+This repository hosts the official site at **https://aathulyam.github.io**.
 
 ## Structure
 ```
