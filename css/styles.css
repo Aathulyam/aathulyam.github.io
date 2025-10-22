@@ -207,4 +207,16 @@ footer a:hover{color:#fff}
   .creed-quote { font-size: 1.1rem; }
 }
 
+/* ===== Fade-In Animation ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
