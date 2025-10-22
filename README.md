@@ -45,7 +45,7 @@ Hosted on GitHub Pages under the Athulyam organization.
 ### 📧 Contact
 
 **Email:** [ceo.athulyam@gmail.com](mailto:ceo.athulyam@gmail.com)  
-**Founder:** Chickoo — Chief Engineer, Athulyam Tech World  
+**Founder:** Venkatasubramanian — Chief Engineer, Athulyam Tech World  
 **Location:** Chennai, India
 
 ---
