@@ -24,6 +24,67 @@ body{
 }
 .hero h1{margin:0;font-size:3rem;letter-spacing:3px}
 .hero .tagline{color:var(--ink-dim);margin-top:8px}
+
+/* ===== Soft Inner Glow Ripple for Hero ===== */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 100px 20px 60px;
+  background: radial-gradient(circle at center, #001f1c 0%, #000 100%);
+  border-bottom: 1px solid #00ffcc22;
+  box-shadow: inset 0 -10px 30px #00ffcc11;
+  overflow: hidden;
+}
+
+/* Moving forge light behind the logo and title */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(0, 255, 204, 0.06),
+    rgba(0, 255, 204, 0.02) 40%,
+    transparent 70%
+  );
+  animation: heroRipple 18s ease-in-out infinite;
+  mix-blend-mode: screen;
+  filter: blur(35px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes heroRipple {
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.8;
+  }
+  25% {
+    transform: scale(1.05) translate(-10px, 10px);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.1) translate(10px, -10px);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1.05) translate(-10px, 10px);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.8;
+  }
+}
+
+/* Make sure content stays above the glow */
+.hero img,
+.hero h1,
+.hero .tagline {
+  position: relative;
+  z-index: 1;
+}
+
 .topnav{
   text-align:center;background:#0f0f0f;padding:14px 8px;
   border-top:1px solid var(--border);border-bottom:1px solid var(--border);
