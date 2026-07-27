@@ -21,7 +21,7 @@ Our foundation is simple:
 |-----------|--------|
 | **Athulyam TechWorks** | Hardware repair, diagnostics, and performance optimization. |
 | **Athulyam Custom Machines** | Bespoke Linux-tuned workstations, edge servers, and creative systems. |
-| **Athulyam OS (linux-nouas)** | Custom kernel and userland optimized for stability, security, and performance. |
+| **Athulyam OS** | Custom kernel and userland optimized for stability, security, and performance. |
 | **Cybersafe** | Digital defense, privacy, and secure system architecture. |
 | **Athulyam Forge** | R&D lab for experimental builds, kernel development, and innovation. |
 
