@@ -10,6 +10,7 @@
 #   - Never silently merges remote changes
 #   - Retries failed pushes
 #   - Detects previously unpushed commits
+#   - Detects remote divergence before committing
 # ============================================================
 
 set REPO_DIR (pwd)
@@ -18,6 +19,10 @@ set REPO_DIR (pwd)
 if test (count $argv) -ge 1
     set REPO_DIR $argv[1]
 end
+
+# ------------------------------------------------------------
+# Validate repository
+# ------------------------------------------------------------
 
 if not test -d "$REPO_DIR/.git"
     echo "❌ Not a Git repository:"
@@ -39,14 +44,11 @@ set SETTLE_DELAY 2
 # ------------------------------------------------------------
 
 function has_unpushed_commits
-    set counts (git rev-list --left-right --count origin/main...HEAD 2>/dev/null | string split ' ')
+    set ahead (git rev-list --count origin/main..HEAD 2>/dev/null)
 
     if test $status -ne 0
         return 1
     end
-
-    set behind $counts[1]
-    set ahead $counts[2]
 
     test "$ahead" -gt 0
 end
@@ -56,14 +58,11 @@ end
 # ------------------------------------------------------------
 
 function remote_is_ahead
-   set counts (git rev-list --left-right --count origin/main...HEAD 2>/dev/null | string split ' ')
+    set behind (git rev-list --count HEAD..origin/main 2>/dev/null)
 
     if test $status -ne 0
         return 1
     end
-
-    set behind $counts[1]
-    set ahead $counts[2]
 
     test "$behind" -gt 0
 end
@@ -73,6 +72,7 @@ end
 # ------------------------------------------------------------
 
 function push_pending
+
     while has_unpushed_commits
 
         echo ""
@@ -87,6 +87,7 @@ function push_pending
 
         echo "⚠️ Push failed."
         echo "   Retrying in $RETRY_DELAY seconds..."
+
         sleep $RETRY_DELAY
 
         # Refresh remote information before retrying.
@@ -98,8 +99,9 @@ function push_pending
             echo "   Automatic sync paused for safety."
             echo ""
             echo "   Run:"
-            echo "   git status -sb"
-            echo "   git log --oneline --graph --decorate --all -10"
+            echo "     git status -sb"
+            echo "     git log --oneline --graph --decorate --all -10"
+            echo ""
             return 1
         end
     end
@@ -129,17 +131,23 @@ echo ""
 while true
 
     # --------------------------------------------------------
-    # First check whether previous commits are waiting to push.
+    # Refresh remote information.
     # --------------------------------------------------------
 
     git fetch origin --quiet
 
+    # --------------------------------------------------------
+    # Never automatically merge remote changes.
+    # --------------------------------------------------------
+
     if remote_is_ahead
+
         echo ""
         echo "🛑 GitHub has changes not present locally."
         echo "   Automatic sync paused for safety."
         echo ""
-        echo "   Resolve the divergence manually before continuing."
+        echo "   Resolve the divergence manually."
+        echo ""
         echo "   Use:"
         echo "     git status -sb"
         echo "     git log --oneline --graph --decorate --all -10"
@@ -149,7 +157,14 @@ while true
         continue
     end
 
+    # --------------------------------------------------------
+    # Push commits that were created before the watcher started
+    # or that remained unpushed after a previous failure.
+    # --------------------------------------------------------
+
     if has_unpushed_commits
+        echo ""
+        echo "📦 Pending local commits detected."
         push_pending
     end
 
@@ -167,7 +182,10 @@ while true
         --exclude '(^|/)\.git(/|$)' \
         .
 
+    # --------------------------------------------------------
     # Give editors a moment to finish writing files.
+    # --------------------------------------------------------
+
     sleep $SETTLE_DELAY
 
     echo ""
@@ -197,6 +215,7 @@ while true
         echo "   Automatic sync paused for safety."
         echo ""
         echo "   Resolve the remote/local difference manually."
+        echo ""
         continue
     end
 
