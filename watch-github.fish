@@ -56,7 +56,7 @@ end
 # ------------------------------------------------------------
 
 function remote_is_ahead
-    set counts (git rev-list --left-right --count origin/main...HEAD 2>/dev/null)
+   set counts (git rev-list --left-right --count origin/main...HEAD 2>/dev/null | string split ' ')
 
     if test $status -ne 0
         return 1
