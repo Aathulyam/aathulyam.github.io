@@ -173,14 +173,14 @@ while true
     # --------------------------------------------------------
 
     inotifywait \
-        -r \
-        -q \
-        -e close_write \
-        -e create \
-        -e delete \
-        -e moved_to \
-        --exclude '(^|/)\.git(/|$)' \
-        .
+    -r \
+    -q \
+    -e close_write \
+    -e create \
+    -e delete \
+    -e moved_to \
+    --exclude '(^|/)(\.git(/|$)|\..*\.sw[p-z]$)' \
+    .
 
     # --------------------------------------------------------
     # Give editors a moment to finish writing files.
