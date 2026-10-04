@@ -1,14 +1,10 @@
-<<<<<<< HEAD
-// Athulyam Group — JS placeholder
-console.log('Athulyam Group online.');
-// Athulyam Auto-Sync test
-// Athulyam Auto-Sync test
-=======
-// Athulyam Group online
-console.log("Athulyam Group online");
+// Athulyam online
+console.log("Athulyam online");
 
-// Athulyam Group online.
-console.log('Athulyam Group online.');
+// Athulyam online.
+console.log('Athulyam online.');
+
+// Athulyam Auto-Sync test
 
 // ===== Scroll Fade-In Animation with Fallback =====
 document.addEventListener('DOMContentLoaded', () => {
@@ -54,4 +50,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, 50);
 });
->>>>>>> origin/main
