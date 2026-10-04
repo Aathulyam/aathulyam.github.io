@@ -6,6 +6,33 @@
   --border: #00ffcc33;
   --card: #101010;
 }
+<<<<<<< HEAD
+=======
+
+/* ===== Ambient Forge Background ===== */
+body {
+  background: linear-gradient(120deg, #000000, #001210, #000000);
+  background-size: 400% 400%;
+  animation: ambientFlow 40s ease-in-out infinite;
+  color: var(--ink);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Rajdhani', sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+@keyframes ambientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+>>>>>>> origin/main
 *{box-sizing:border-box}
 body{
   margin:0;
@@ -24,6 +51,54 @@ body{
 }
 .hero h1{margin:0;font-size:3rem;letter-spacing:3px}
 .hero .tagline{color:var(--ink-dim);margin-top:8px}
+<<<<<<< HEAD
+=======
+
+/* ===== Soft Inner Glow Ripple for Hero ===== */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 100px 20px 60px;
+  background: radial-gradient(circle at center, #001f1c 0%, #000 100%);
+  border-bottom: 1px solid #00ffcc22;
+  box-shadow: inset 0 -10px 30px #00ffcc11;
+  overflow: hidden;
+}
+
+/* Moving forge light behind the logo and title */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(0, 255, 204, 0.06),
+    rgba(0, 255, 204, 0.02) 40%,
+    transparent 70%
+  );
+  animation: heroRipple 18s ease-in-out infinite;
+  mix-blend-mode: screen;
+  filter: blur(35px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes heroRipple {
+  0%, 100% { opacity: 0.85; transform: scale(1) translate(0, 0); }
+  50% { opacity: 1; transform: scale(1.1) translate(10px, -10px); }
+}
+
+}
+
+/* Make sure content stays above the glow */
+.hero img,
+.hero h1,
+.hero .tagline {
+  position: relative;
+  z-index: 1;
+}
+
+>>>>>>> origin/main
 .topnav{
   text-align:center;background:#0f0f0f;padding:14px 8px;
   border-top:1px solid var(--border);border-bottom:1px solid var(--border);
@@ -53,3 +128,237 @@ footer{
 footer a{color:var(--ink);text-decoration:none}
 footer a:hover{color:#fff}
 @media (max-width:520px){.hero h1{font-size:2.2rem}}
+<<<<<<< HEAD
+=======
+
+/* Floating Scroll-to-Top Button */
+#scrollTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: #00ffcc;
+  color: #000;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #00ffcc55;
+}
+
+#scrollTopBtn:hover {
+  background-color: #0b0b0b;
+  color: #00ffcc;
+  box-shadow: 0 0 15px #00ffcc99;
+}
+
+/* ===== Hero Section ===== */
+.hero {
+  text-align: center;
+  padding: 100px 20px 60px;
+  background: radial-gradient(circle at center, #001f1c 0%, #000 100%);
+  border-bottom: 1px solid #00ffcc22;
+  box-shadow: inset 0 -10px 30px #00ffcc11;
+}
+
+.hero .logo {
+  width: 160px;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+  filter: drop-shadow(0 0 18px rgba(0,255,204,0.4));
+  transition: transform 0.3s ease;
+}
+
+.hero .logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 25px rgba(0,255,204,0.6));
+}
+
+.hero h1 {
+  font-family: 'Orbitron', 'Rajdhani', sans-serif;
+  color: #00ffcc;
+  font-size: 3rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 10px 0 8px;
+  text-shadow: 0 0 18px #00ffcc44;
+}
+
+.hero .tagline {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.2rem;
+  color: #66ffe0;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px #00ffcc33;
+}
+
+/* ===== Athulyam Creed / Philosophy ===== */
+.creed {
+  position: relative;
+  padding: 80px 20px;
+  background: radial-gradient(1200px 600px at 50% 0%, #001a17 0%, #000 70%);
+  border-top: 1px solid #00ffcc22;
+  border-bottom: 1px solid #00ffcc22;
+  overflow: hidden;
+}
+
+.creed::before {
+  /* faint aurora glow sweeping behind the text */
+  content: "";
+  position: absolute;
+  inset: -20% -10%;
+  background: radial-gradient(circle at 30% 20%, rgba(0,255,204,0.10), transparent 40%),
+              radial-gradient(circle at 70% 80%, rgba(0,255,204,0.06), transparent 40%);
+  filter: blur(30px);
+  pointer-events: none;
+}
+
+.creed-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.creed h2 {
+  color: #00ffcc;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 0 16px;
+  text-shadow: 0 0 12px rgba(0,255,204,0.35);
+}
+
+.creed-lede {
+  color: #8bd9c9;
+  font-size: 1.1rem;
+  margin: 0 auto 26px;
+}
+
+.creed-quote {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #e7fffb;
+  margin: 0 auto 26px;
+  padding: 16px 18px;
+  border-left: 4px solid #00ffcc;
+  display: inline-block;
+  text-align: left;
+  background: rgba(0,255,204,0.06);
+  box-shadow: 0 0 18px rgba(0,255,204,0.10) inset, 0 0 18px rgba(0,255,204,0.10);
+}
+
+.creed-body {
+  color: #9feee0;
+  margin: 0 auto 28px;
+}
+
+.creed-pillars {
+  list-style: none;
+  padding: 0;
+  margin: 22px auto 0;
+  max-width: 760px;
+  text-align: left;
+}
+
+.creed-pillars li {
+  margin: 10px 0;
+  padding: 10px 14px;
+  background: rgba(0,255,204,0.05);
+  border: 1px solid #00ffcc22;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0,255,204,0.08);
+}
+
+.creed-pillars li span {
+  color: #00ffcc;
+  font-weight: 700;
+}
+
+/* small screens */
+@media (max-width: 520px) {
+  .creed-quote { font-size: 1.1rem; }
+}
+
+/* ===== Fade-In Animation ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Gentle Pulse Glow Effect ===== */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.15), inset 0 0 15px rgba(0, 255, 204, 0.05);
+    border-color: rgba(0, 255, 204, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(0, 255, 204, 0.35), inset 0 0 25px rgba(0, 255, 204, 0.1);
+    border-color: rgba(0, 255, 204, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.15), inset 0 0 15px rgba(0, 255, 204, 0.05);
+    border-color: rgba(0, 255, 204, 0.2);
+  }
+}
+
+.creed {
+  position: relative;
+  padding: 80px 20px;
+  background: radial-gradient(1200px 600px at 50% 0%, #001a17 0%, #000 70%);
+  border-top: 1px solid #00ffcc22;
+  border-bottom: 1px solid #00ffcc22;
+  overflow: hidden;
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+/* ===== Inner Glow Ripple Effect ===== */
+.creed::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(0, 255, 204, 0.07),
+    rgba(0, 255, 204, 0.02) 40%,
+    transparent 70%
+  );
+  mix-blend-mode: screen;
+  animation: rippleGlow 14s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(30px);
+  opacity: 0.8;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 28px rgba(0, 255, 204, 0.35),
+                inset 0 0 25px rgba(0, 255, 204, 0.1);
+    border-color: rgba(0, 255, 204, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.15),
+                inset 0 0 15px rgba(0, 255, 204, 0.05);
+    border-color: rgba(0, 255, 204, 0.2);
+  }
+}
+
+
+/* Maintain readable layering for content */
+.creed-inner {
+  position: relative;
+  z-index: 1;
+}
+
+>>>>>>> origin/main
