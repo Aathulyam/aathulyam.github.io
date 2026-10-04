@@ -4,8 +4,6 @@ console.log("Athulyam online");
 // Athulyam online.
 console.log('Athulyam online.');
 
-// Athulyam Auto-Sync test
-
 // ===== Scroll Fade-In Animation with Fallback =====
 document.addEventListener('DOMContentLoaded', () => {
   const faders = document.querySelectorAll('.fade-in');
