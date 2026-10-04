@@ -197,9 +197,11 @@ while true
     # Check whether Git actually sees a change.
     # --------------------------------------------------------
 
-    if test -z (git status --porcelain)
-        continue
-    end
+   set GIT_CHANGES (git status --porcelain)
+
+   if test (count $GIT_CHANGES) -eq 0
+     continue
+  end
 
     git status --short
 
